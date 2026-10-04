@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ConstraintLayout: el logo se ubica respecto a la pantalla y cada elemento
+     siguiente se amarra al de arriba y se centra respecto al logo.
+     Así, si se mueve el logo, todo el grupo se mueve con él. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/logo_fittracker"
+        android:scaleType="fitCenter"
+        android:contentDescription="Logo FitTracker"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Bienvenido a FitTracker"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/rosa"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintStart_toStartOf="@id/imgLogo"
+        app:layout_constraintEnd_toEndOf="@id/imgLogo" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Registra tus entrenamientos, controla tu intensidad y monitorea el avance de tu meta diaria."
+        android:textSize="16sp"
+        android:textColor="@color/texto"
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
+        app:layout_constraintStart_toStartOf="@id/imgLogo"
+        app:layout_constraintEnd_toEndOf="@id/imgLogo" />
+
+    <Button
+        android:id="@+id/btnComenzar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Comenzar"
+        android:backgroundTint="@color/rosa"
+        android:textColor="@color/blanco"
+        app:layout_constraintTop_toBottomOf="@id/txtDescripcion"
+        app:layout_constraintStart_toStartOf="@id/imgLogo"
+        app:layout_constraintEnd_toEndOf="@id/imgLogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

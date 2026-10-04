@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ScrollView: permite desplazar todo el formulario en pantallas pequeñas sin solapamientos.
+     Un ScrollView solo admite UN hijo directo, por eso contiene un ConstraintLayout. -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".RegistroActivity">
+
+    <!-- ConstraintLayout: cada elemento se amarra al de arriba (Top_toBottomOf),
+         así todos quedan unidos y si se mueve el primero, se mueven todos. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtTituloRegistro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Registro de Actividad"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/rosa"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 1. Spinner: tipo de entrenamiento -->
+        <TextView
+            android:id="@+id/lblTipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tipo de entrenamiento"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/txtTituloRegistro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerTipo"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/lblTipo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 2. RadioGroup: intensidad -->
+        <TextView
+            android:id="@+id/lblIntensidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Intensidad"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/spinnerTipo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/rgIntensidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/lblIntensidad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <RadioButton
+                android:id="@+id/rbBaja"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Baja" />
+
+            <RadioButton
+                android:id="@+id/rbMedia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Media" />
+
+            <RadioButton
+                android:id="@+id/rbAlta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Alta" />
+        </RadioGroup>
+
+        <!-- 3. CheckBox: aspectos completados -->
+        <TextView
+            android:id="@+id/lblAspectos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Aspectos completados"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/rgIntensidad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- LinearLayout vertical: agrupa los 3 CheckBox uno debajo del otro -->
+        <LinearLayout
+            android:id="@+id/layoutAspectos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/lblAspectos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <CheckBox
+                android:id="@+id/chkCalentamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calentamiento realizado" />
+
+            <CheckBox
+                android:id="@+id/chkHidratacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hidratación adecuada" />
+
+            <CheckBox
+                android:id="@+id/chkEstiramiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estiramiento final" />
+        </LinearLayout>
+
+        <!-- Duración del entrenamiento en minutos (EditText numérico) -->
+        <TextView
+            android:id="@+id/lblDuracion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Duración del entrenamiento (minutos)"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/layoutAspectos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/edtMinutos"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:hint="Ej: 30"
+            android:inputType="number"
+            android:maxLength="3"
+            app:layout_constraintTop_toBottomOf="@id/lblDuracion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 4. RatingBar: esfuerzo percibido (1 a 5 estrellas) -->
+        <TextView
+            android:id="@+id/lblEsfuerzo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Esfuerzo percibido (1 a 5)"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/edtMinutos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RatingBar
+            android:id="@+id/ratingEsfuerzo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="0"
+            android:progressTint="@color/rosa"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintTop_toBottomOf="@id/lblEsfuerzo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 5. ProgressBar: meta diaria de 60 minutos (60 min = 100%) -->
+        <TextView
+            android:id="@+id/lblProgreso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Progreso de la meta diaria (60 minutos)"
+            android:textStyle="bold"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/ratingEsfuerzo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressMeta"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/rosa"
+            app:layout_constraintTop_toBottomOf="@id/lblProgreso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtProgreso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0 de 60 minutos (0%)"
+            android:textColor="@color/texto"
+            app:layout_constraintTop_toBottomOf="@id/progressMeta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Registrar sesión"
+            android:backgroundTint="@color/rosa"
+            android:textColor="@color/blanco"
+            app:layout_constraintTop_toBottomOf="@id/txtProgreso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- TableLayout: resumen en formato de tabla (etiqueta | valor) -->
+        <TableLayout
+            android:id="@+id/tablaResumen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/blanco"
+            android:padding="8dp"
+            android:stretchColumns="1"
+            app:layout_constraintTop_toBottomOf="@id/btnRegistrar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TableRow>
+                <TextView
+                    android:text="Sesiones registradas:"
+                    android:textStyle="bold"
+                    android:padding="4dp" />
+                <TextView
+                    android:id="@+id/txtResumenTotal"
+                    android:text="0"
+                    android:padding="4dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Última sesión:"
+                    android:textStyle="bold"
+                    android:padding="4dp" />
+                <TextView
+                    android:id="@+id/txtResumenUltima"
+                    android:text="-"
+                    android:padding="4dp" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- RecyclerView: listado de sesiones registradas -->
+        <TextView
+            android:id="@+id/lblSesiones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sesiones registradas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/rosa"
+            app:layout_constraintTop_toBottomOf="@id/tablaResumen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSesiones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/lblSesiones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
